@@ -17,8 +17,14 @@ public class HelloController {
     public String getName(@PathVariable String name){
         return "Hello " + name;
     }
+    @GetMapping ("/details")
+    public String details(@RequestParam String name, int age) {
+        return "Name: " + name + "  Age: " + age;
+    }
 
 
 
 
-}
+
+
+    }
