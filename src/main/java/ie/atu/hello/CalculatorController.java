@@ -7,12 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CalculatorController {
-    @GetMapping("/calculate")
+    @GetMapping("/calculate/{num1}/{num2}/{operation}")
     public CalculatorAnswer calculate(
-            @RequestParam("num1") int num1,
-            @RequestParam("num2") int num2,
-            @RequestParam("operation") String operation)
-    {
+            @PathVariable("num1") int num1,
+            @PathVariable("num2") int num2,
+            @PathVariable("operation")  String operation) {
         int answer = 0;
         String symbol = "";
 
@@ -26,22 +25,18 @@ public class CalculatorController {
                 symbol = "-";
                 break;
             case "multiply":
-                answer= num1 * num2;
+                answer = num1 * num2;
                 symbol = "*";
                 break;
             case "divide":
-                    answer = num1 / num2;
-                    symbol = "/";
+                answer = num1 / num2;
+                symbol = "/";
                 break;
             default:
                 throw new IllegalArgumentException("Invalid operation: " + operation);
         }
 
         return new CalculatorAnswer(operation, num1, symbol, num2, answer);
-}
 
-
-
-
-
+    }
 }
