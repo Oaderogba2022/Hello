@@ -11,7 +11,7 @@ public class CalculatorController {
     public CalculatorAnswer calculate(
             @PathVariable("num1") int num1,
             @PathVariable("num2") int num2,
-            @PathVariable("operation") String operation) {
+            @PathVariable("operation")  String operation) {
         int answer = 0;
         String symbol = "";
 
